@@ -1,4 +1,4 @@
-# calendar
+# schedule
 
 ## Installation
 

@@ -14,5 +14,18 @@ export const App = () => (
     layout={Layout}
     dataProvider={dataProvider}
     authProvider={authProvider}
-  ></Admin>
+  >
+    <Resource
+      name="calendar"
+      list={ListGuesser}
+      edit={EditGuesser}
+      show={ShowGuesser}
+    />
+    <Resource
+      name="event"
+      list={ListGuesser}
+      edit={EditGuesser}
+      show={ShowGuesser}
+    />
+  </Admin>
 );
