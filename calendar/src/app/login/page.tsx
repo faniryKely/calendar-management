@@ -1,20 +1,16 @@
 "use client";
 import React from "react";
+import { useEffect, useState } from "react"; 
+import Link from "next/link";
 
 const CustomLoginPage = () => {
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     // Ajouter ici votre logique de gestion de la connexion
-//     console.log("Login button clicked");
-
 
   return (
     <section className="h-screen flex flex-col items-center justify-center bg-green-500 bg-opacity-100">
         <div className="mb-8">
-            <h1 className="text-4xl font-bold text-white">Calendrier</h1> 
+            <h1 className="text-4xl font-bold text-white">Agenda</h1> 
          </div>
-    <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
+    <div className="w-full flex flex-col max-w-md p-8 bg-white shadow-lg rounded-lg">
         <form>
         <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -46,6 +42,14 @@ const CustomLoginPage = () => {
             </button>
         </div>
         </form>
+        <div className="flex flex-nowrap justify-between mt-8" >
+            <div >
+                <Link href={'/Users'}><h1 className="text-black">Mot de passe oublier</h1></Link>
+            </div>
+            <div>
+                <Link href={'/singup'}><h1 className="text-purple-600">Creer un compte</h1></Link>
+            </div>
+        </div>
     </div>
     </section>
 
