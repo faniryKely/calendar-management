@@ -2,8 +2,42 @@
 import React from "react";
 import { useEffect, useState } from "react"; 
 import Link from "next/link";
+import axios from "axios";
+
 
 const CustomLoginPage = () => {
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>(""); 
+    const [error, setError] = useState<String>("");
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setError('');
+
+        try {
+            const response = await axios("http://localhost:8080/auth/login", {
+                method: "POST",
+                headers : {
+                    "Content-Type" : "application/json",
+                },
+                data: JSON.stringify({email, password}),
+            });
+
+            if (response.status != 200) {
+                throw new Error ("Invalid login credentials")
+            }
+
+            const data =  await response.data;
+        
+            localStorage.setItem('token', data.token);
+            console.log("Vous etes connecté : ", data)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`
+            window.location.href = ("/Users")
+        }
+        catch (error: any) {
+            setError(error.message || 'Erreur lors de la connexion : identifiants invalides'); 
+        }
+    }
 
   return (
     <section className="h-screen flex flex-col items-center justify-center bg-green-500 bg-opacity-100">
