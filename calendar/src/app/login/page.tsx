@@ -45,7 +45,7 @@ const CustomLoginPage = () => {
             <h1 className="text-4xl font-bold text-white">Agenda</h1> 
          </div>
     <div className="w-full flex flex-col max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <form>
+        <form onSubmit={handleSubmit}>
         <div className="mb-6">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
             Adresse Email
@@ -53,6 +53,7 @@ const CustomLoginPage = () => {
             <input
             type="email"
             id="email"
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Votre adresse email"
             />
@@ -64,6 +65,7 @@ const CustomLoginPage = () => {
             <input
             type="password"
             id="password"
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Votre mot de passe"
             />
