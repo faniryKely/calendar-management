@@ -7,12 +7,19 @@ const HeaderPage = () => {
     const handleClick = () => {
         router.push('/login');
     }
-    return(
+    return (
         <main>
-           <button onClick={handleClick}>
-                Click me !
-           </button>
+          <div className="h-screen flex flex-col justify-center items-center ">
+            <button
+              onClick={handleClick}
+              className="bg-green-500 text-white py-2 px-4 rounded text-center transform transition-transform duration-200 hover:scale-105"
+            >
+              Get Started!
+            </button>
+          </div>
         </main>
-    );
+      );
+      
+      
 }
 export default HeaderPage;
