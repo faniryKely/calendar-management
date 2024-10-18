@@ -40,7 +40,7 @@ const CustomLoginPage = () => {
     }
 
   return (
-    <section className="h-screen flex flex-col items-center justify-center bg-green-500 bg-opacity-100">
+    <section className="h-screen flex flex-col items-center justify-center bg-green-500">
         <div className="mb-8">
             <h1 className="text-4xl font-bold text-white">Agenda</h1> 
          </div>
@@ -83,7 +83,7 @@ const CustomLoginPage = () => {
                 <Link href={'/Users'}><h1 className="text-black">Mot de passe oublier</h1></Link>
             </div>
             <div>
-                <Link href={'/singup'}><h1 className="text-purple-600">Creer un compte</h1></Link>
+                <Link href={'/singup'}><h1 className="text-purple-600">Creer un compte</h1> </Link>
             </div>
         </div>
     </div>
