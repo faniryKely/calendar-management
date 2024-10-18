@@ -3,13 +3,14 @@ import React from "react";
 import { useEffect, useState } from "react"; 
 import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 
 const CustomLoginPage = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>(""); 
     const [error, setError] = useState<String>("");
-
+    
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setError('');
@@ -83,7 +84,7 @@ const CustomLoginPage = () => {
                 <Link href={'/Users'}><h1 className="text-black">Mot de passe oublier</h1></Link>
             </div>
             <div>
-                <Link href={'/singup'}><h1 className="text-purple-600">Creer un compte</h1> </Link>
+                <Link href={'/signup'}><h1 className="text-purple-600">Creer un compte</h1> </Link>
             </div>
         </div>
     </div>
