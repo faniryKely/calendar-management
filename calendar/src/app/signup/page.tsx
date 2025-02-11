@@ -13,6 +13,7 @@ const CustomSignUpPage = () => {
     const [password, setPassword] = useState<String>("")
     const [error, setError] = useState<string>('');
     const [success, setSuccess] = useState<string>('');
+    const [invalidFields, setInvalidFields] = useState<{[key : string ] : boolean}>({});
 
     const Register = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -44,6 +45,18 @@ const CustomSignUpPage = () => {
         catch (error : any) {
             setError(error.message || 'Erreur lors de l\'inscription');
         }
+
+        const ValidateFields = () => {
+            const newInvalidFields : {[ key : string ] : boolean } = {} 
+            if(!name.trim())
+                newInvalidFields.name = true;
+            if (!firstName.trim()) newInvalidFields.firstName = true;
+            if (!birthdate.trim()) newInvalidFields.birthdate = true;
+            if (!email.trim()) newInvalidFields.email = true;
+            if (!password.trim()) newInvalidFields.password = true;
+            setInvalidFields(newInvalidFields);
+            return Object.keys(newInvalidFields).length === 0;
+        }
     }
     
 
@@ -62,7 +75,8 @@ return (
             type="name"
             id="name"
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border ${
+                invalidborder-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Votre nom"
             />
         </div>
@@ -74,7 +88,8 @@ return (
             type="firstName"
             id="firstName"
             onChange={(e) => setFirstName(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border $rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            // className={`"w-full px-4 py-2 border ${invalidFields.name ?  "border-red-500" : "border-gray-300" } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"`}
             placeholder="Votre prénom"
             />
         </div>
